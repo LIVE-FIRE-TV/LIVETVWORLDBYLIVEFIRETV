@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVE FIRE TV</title>
+    
+    <!-- Plyr.js CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    
+    <style>
+        /* General Styles */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #121212;
+            border-bottom: 2px solid #6a1b9a;
+        }
+        .header img {
+            height: 50px;
+        }
+
+        .video-container {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-container.active {
+            display: block;
+        
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        /* Channel Section */
+        .section-title {
+            color: #ff0;
+            font-size: 20px;
+            margin: 20px 0 10px 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        .grid .channel {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        .grid .channel img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .grid .channel:hover img {
+            transform: scale(1.1);
+        }
+        .grid .channel::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: white;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .welcome-box {
+            background-color: black;
+            padding: 10px;
+            border: 2px solid Green;
+            margin-top: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .welcome-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+            font-size: 20px;
+            color: #00ff00;
+            font-weight: bold;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+     
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #6a1b9a;
+            padding: 10px;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header img {
+                height: 40px;
+            }
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="https://cdnmf.picsart.com/cloud-storage/36d86ac6-4153-41f6-9e92-e60363b9c337.png?type=webp&to=min&r=250" alt="Logo">
+        </div>
+        <img src="https://i.imgur.com/sdO6He1.jpeg" alt="Banner" id="video-banner" style="width: 100%; max-width: 800px;">
+        
+</div>
+    </div>
+
+   <div id="video-container" class="video-container">
+        <video id="video-player" class="plyr__video-embed" controls autoplay></video>
+        <div class="description" id="video-description"></div>
+        </div>
+        <div class="welcome-box">
+    <div class="welcome-text">WELCOME TO LIVE FIRE TV ! NOW FIX BD AND HINDI CHANNEL ALL SO CHECK NOW AND INTERNATIONAL AND SPORTS CHANNEL ADD SOON ! NOTICE - TV USER PLEASE USE MOUSE ! THANKS</div>
+        
+        
+        
+    </div>
+
+    <div>
+        <div class="section-title">▶ BANGLADESHI</div>
+        <div class="grid">
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/998.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Bangladesh_Television_Logo.svg/1200px-Bangladesh_Television_Logo.svg.png" alt="Channel 1">
+            </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/998.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/BTV_NEWS_Logo_-_Bangladesh_Television.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/3818.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/BTV_Chattogram_Logo.svg/640px-BTV_Chattogram_Logo.svg.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/413.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Sangsad_Television_Emblem.svg/640px-Sangsad_Television_Emblem.svg.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/431.m3u8')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnln5VS69yW6dk4xkYYxRU4bZLDTktqVI2Q&s" alt="Channel 2">
+                  </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/3Us91R-gGx8?si')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Channel-i.svg/1200px-Channel-i.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://ekusheyserver.com/etvlivesn.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Ekushey_Television_Logo.svg/800px-Ekushey_Television_Logo.svg.png" alt="Channel 2">
+                  </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/424.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/NTV_%28Bangladesh%29_logo.svg/1200px-NTV_%28Bangladesh%29_logo.svg.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/V7XBp5A3JMg?si')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Rtv_bangladesh.svg/1200px-Rtv_bangladesh.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://boishakhi.sonarbanglatv.com/boishakhi/boishakhitv/index.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Boishakhi_TV_logo.svg/870px-Boishakhi_TV_logo.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/426.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Banglavision.svg/1200px-Banglavision.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/394.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Desh_tv_logo.jpg" alt="Channel 2">
+                   </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/DhoULKUNOEg?si')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLH4r9woi5yTmX0_QjfalO2fa13b3ASVCnw&s" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/398.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Logo_of_My_TV_%28Bangladesh%29.svg/1200px-Logo_of_My_TV_%28Bangladesh%29.svg.png" alt="Channel 2">
+                
+              </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/397.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Mohona_tv_Logo.svg/1200px-Mohona_tv_Logo.svg.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/408.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Logo_of_Bijoy_TV.svg/640px-Logo_of_Bijoy_TV.svg.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/WRqBRITnPjg?si')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/SOMOY_TV_Logo.svg/1200px-SOMOY_TV_Logo.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/amuxfC3A4h4?si')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBC5lhL2KVUrvATB-N-IsbY38nBh-QmDDpEQ&s" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/1036.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/39/Maasranga_Television_Logo.jpg" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/434.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Channel9_bd.svg/1200px-Channel9_bd.svg.png" alt="Channel 2">
+               </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/430.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/bn/thumb/e/ec/%E0%A6%8F%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg/800px-%E0%A6%8F%E0%A6%B6%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A8_%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A6%BF%E0%A6%B0_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/3814.m3u8')">
+                <img src="https://yt3.googleusercontent.com/Keovy5dXN5_TUbQVUJvu-UCxCC_qLT_dLLbXEY9zBJe2uEarLzr70OIiSLhY4wL3qz--vPq6=s176-c-k-c0x00ffffff-no-rj-mo" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/1331.m3u8')">
+                <img src="https://jcwsw2vt33.gpcdn.net/uploads/images/2022/07/25/logos_1384ea456744d5914ba331fa72df78c8_goplay_deepto_logo_final_white.svg" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/767.m3u8')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG1t5Mt76RpYEigVALW3olQmXSMQOdYKF8xQ&s" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/NAAmGyQjoYw?si')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Logo_of_Channel_24_%28Bangladesh%29.svg/1200px-Logo_of_Channel_24_%28Bangladesh%29.svg.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/6i5RTd05Cr4?si')">
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_mcjICfjqYwOn4eljNmtsZLBpOmW0t0JlzJUhXSslAkBVo=s900-c-k-c0x00ffffff-no-rj" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/ObFPYcyFUwA?si')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkA9JiFh7mPzvSJaR1VRwnRR-RI8CSyciGhA&s" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/HKfscnBFvnA?si')">
+                <img src="https://yt3.googleusercontent.com/54prTx28YpPxSpk_PfJGuOfQgcZbNdvbfk0adGePrAvINO4Mo9_bw3j-J4seXn6hNGuMr1ck=s900-c-k-c0x00ffffff-no-rj" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/3810.m3u8')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLaZNezL94GTQ_d7ieXwaV4zoadQYKuK8m6w&s" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/3803.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Bangla_TV_logo.svg/1200px-Bangla_TV_logo.svg.png" alt="Channel 2">
+                   </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/3802.m3u8')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyYylSe228k0X_0CE-BQIBGTTUPymFFo5YIw&s" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/399.m3u8')">
+                <img src="https://seeklogo.com/images/A/anondo-tv-logo-B99389891D-seeklogo.com.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/411.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/d3/Nexus_Television_Logo.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/4231.m3u8')">
+                <img src="https://yt3.googleusercontent.com/nFx9WdWGoRkx4Yng0QeZ7IsBaZOwCdocwfwseDOKAwjUdBPk-RZQaRzYsVHMQU12zbr-VsHE=s900-c-k-c0x00ffffff-no-rj" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://www.youtube.com/embed/i-mWMkYmaxs?si')">
+                <img src="https://yt3.googleusercontent.com/wsfTI4V_6DjOt2kcNszDhCwUXsWtF2MZ_lM7msAGjl1kw4dF8w7Vy8MGE2_lE09k5ciExqy2zw=s176-c-k-c0x00ffffff-no-rj-mo" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/393.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/aa/Channel_S_Bangladesh_Logo.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://i.imgur.com/MDcxKyT.mp4')">
+                <img src="https://cdnmf.picsart.com/cloud-storage/36d86ac6-4153-41f6-9e92-e60363b9c337.png?type=webp&to=min&r=250" alt="Channel 2">
+               
+    
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="section-title">▶HINDI </div>
+        <div class="grid">
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/144.m3u8')">
+                <img src="https://www.sonypicturesnetworks.com/images/logos/SET-LOGO-HD.png" alt="Channel 1">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/145.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/en/f/f4/Sony_Sab_new.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/4077.m3u8')">
+                <img src="https://yt3.googleusercontent.com/d5qlYlKtK0U4c-lkdJdC8EELLTFJQeBXJN2RLm8541xwgwM_WP28D9cV5HwXRaHE5CUrRB7M=s900-c-k-c0x00ffffff-no-rj" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/151.m3u8')">
+                <img src="https://jiotvimages.cdn.jio.com/dare_images/images/Sony_Max_HD.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/6627.m3u8')">
+                <img src="https://www.sonypicturesnetworks.com/images/logos/SONY%20PAL.png" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/230.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Zee_Cinema_logo.png?20230802074221" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/9371.m3u8')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Zee_TV-2018.png" alt="Channel 2">
+                 </div>
+            <div class="channel" onclick="playVideo('https://starshare.org:443/live/134134/134134/9370.m3u8')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp_aeFgvj0_-mvCCfiPaSkfhkuZpv4xqlRrg&s" alt="Channel 2">
+                </div>
+            <div class="channel" onclick="playVideo('https://i.imgur.com/MDcxKyT.mp4')">
+                <img src="https://cdnmf.picsart.com/cloud-storage/36d86ac6-4153-41f6-9e92-e60363b9c337.png?type=webp&to=min&r=250" alt="Channel 2">
+                
+
+    <div></div>
+    
+        </div>
+   </div>
+    
+    </div>
+
+    <!-- Plyr.js JavaScript -->
+     <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8"></script>
+    <script>
+        const player = new Plyr('#video-player');
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.channels').forEach(ch => ch.classList.remove('active'));
+
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function filterChannels() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            document.querySelectorAll('.channel').forEach(channel => {
+                const text = channel.textContent.toLowerCase();
+                channel.style.display = text.includes(query) ? 'inline-block' : 'none';
+            });
+        }
+
+        function playVideo(videoUrl, description) {
+    document.getElementById('video-container').classList.add('active');
+    document.querySelectorAll('.tabs, .channels').forEach(el => el.style.display = 'none');
+
+    if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+        player.source = {
+            type: 'video',
+            sources: [{ src: videoUrl, provider: 'youtube' }]
+        };
+    } else {
+        player.source = {
+            type: 'video',
+            sources: [{ src: videoUrl, type: 'video/mp4' }]
+        };
+    }
+
+    document.getElementById('video-description').textContent = description;
+
+    // Fullscreen mode on video play
+    player.fullscreen.enter();
+
+    // অটোপ্লে শুরু
+    player.play();
+}
+
+function goBack() {
+    // ভিডিও বন্ধ করা
+    player.stop();
+
+    // ভিডিও প্লেয়ার হাইড করা এবং চ্যানেল লিস্ট দেখানো
+     document.getElementById('video-container').classList.remove('active');
+    document.querySelectorAll('.tabs, .channels').forEach(el => el.style.display = '');
+}
+    </script>
+    <footer class="footer">
+        <p>CREATED BY - AHIL</p>
+    </footer>
+</body>
+</html>
+          </body>
+        </html>
